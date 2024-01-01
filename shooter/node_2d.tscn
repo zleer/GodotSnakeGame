@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjwkcx33xw65x"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_xm2pc"]
+[ext_resource type="Texture2D" uid="uid://bambhpqn0y5dd" path="res://walkingforward.png" id="2_u81ds"]
+[ext_resource type="Texture2D" uid="uid://cb7gnf7citclt" path="res://pixil-frame-0 (9).png" id="3_l6rti"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn76s"]
+size = Vector2(57.5, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtrv3"]
+atlas = ExtResource("2_u81ds")
+region = Rect2(0, 0, 954, 1088)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jse56"]
+atlas = ExtResource("2_u81ds")
+region = Rect2(1139, 0, 1062, 1088)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muu5b"]
+atlas = ExtResource("2_u81ds")
+region = Rect2(2467, 0, 797, 1088)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kt6i"]
+atlas = ExtResource("3_l6rti")
+region = Rect2(0, 0, 789, 1088)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wulk"]
+atlas = ExtResource("3_l6rti")
+region = Rect2(1237, 0, 789, 1088)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uumxf"]
+atlas = ExtResource("3_l6rti")
+region = Rect2(2553, 0, 710, 1088)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bigjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtrv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jse56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtrv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muu5b")
+}],
+"loop": true,
+"name": &"Walking Forward",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kt6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wulk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kt6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uumxf")
+}],
+"loop": true,
+"name": &"Walking Left",
+"speed": 3.0
+}]
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_vertical_guides_ = []
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_xm2pc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_vn76s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_bigjp")
+animation = &"Walking Forward"
+frame = 3
+frame_progress = 0.256453
